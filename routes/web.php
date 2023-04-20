@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,5 +50,7 @@ Route::prefix('admin')->group(function () {
             ],
             'as' => 'admin'
         ]);
+
+        Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile.index');
     });
 });
