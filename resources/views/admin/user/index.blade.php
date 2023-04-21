@@ -53,7 +53,7 @@
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td class="text-center">
-                                                <a href="" class="btn btn-primary btn-sm">
+                                                <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 

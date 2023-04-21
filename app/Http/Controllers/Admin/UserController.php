@@ -83,13 +83,13 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $this->validate([
+        $this->validate($request, [
             'name'  => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'required|confirmed'
         ]);
-        $password = $user->password;
 
+        $password = $user->password;
         if ($request->password <> "") {
             $password = bcrypt($request->password);
         };
@@ -97,7 +97,7 @@ class UserController extends Controller
         $simpan = $user->update([
             'name'  => $request->name,
             'email' => $request->email,
-            'password' => $passwor
+            'password' => $password
         ]);
 
         if ($simpan) {
