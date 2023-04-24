@@ -80,4 +80,66 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function Delete(id){
+            var id = id;
+            var token = $("meta[name='csrf-token']").attr('content');
+
+            swal({
+                title : 'Apakah Kamu Yakin?',
+                text : 'Data Akan Dihapus',
+                icon : 'warning',
+                buttons : [
+                    'Tidak',
+                    'Ya'
+                ],
+                dangerMode: true,
+            }).then(function (isConfirm){
+                if (isConfirm){
+                    $.ajax({
+                        "url" : "/admin/user/" + id,
+                        "data" : {
+                            "id": id,
+                            "_token": token 
+                        },
+                        "type": "DELETE",
+                        success: function(response){
+                            if(response.status=="success"){
+                                swal({
+                                    title: "Berhasil",
+                                    text: "Data Berhasil Dihapus",
+                                    icon: "success",
+                                    timer: 1000,
+                                    showConfirmButtons: false,
+                                    showaCancelButtons: false,
+                                    buttons: false
+                                }).then (function(){
+                                    location.reload();
+                                })
+                            }
+                            else {
+                                swal({
+                                    title: "Gagal",
+                                    text: "Data Gagal Dihapus",
+                                    icon: "error",
+                                    timer: 1000,
+                                    showConfirmButtons: false,
+                                    showaCancelButtons: false,
+                                    buttons: false
+                                }).then (function(){
+                                    location.reload();
+                                })
+                            }
+                        }
+                    })
+                }
+                else {
+                    return true;
+                }
+            })
+        }
+    </script>
+
+
 @endsection
