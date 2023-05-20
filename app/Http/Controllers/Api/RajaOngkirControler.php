@@ -45,7 +45,7 @@ class RajaOngkirControler extends Controller
         return response()->json([
             'success'   => true,
             'message'   => 'List data alla courier : ' . $request->courier,
-            'data'      => $response['rajaongkir'['results'][0]]
+            'data'      => $response['rajaongkir']['results'][0]
         ]);
     }
 }
