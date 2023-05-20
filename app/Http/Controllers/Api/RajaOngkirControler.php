@@ -34,7 +34,7 @@ class RajaOngkirControler extends Controller
     {
         $response = Http::withHeaders([
             'key'   => config('services.rajaongkir.key')
-        ])->post('https://api.rajaongkir.com/starter/cost',[
+        ])->post('https://api.rajaongkir.com/starter/cost', [
             // send data
             'origin'    => 113, //contoh
             'destination'   => $request->city_destination,
@@ -44,12 +44,8 @@ class RajaOngkirControler extends Controller
 
         return response()->json([
             'success'   => true,
-            'message'   => 'List data alla courier : '. $request->courier,
-            'data'      => $response['rajaongkir'['results'][0]        
+            'message'   => 'List data alla courier : ' . $request->courier,
+            'data'      => $response['rajaongkir'['results'][0]]
         ]);
-
-
     }
-
-
 }
