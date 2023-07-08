@@ -44,3 +44,8 @@ Route::post('/cart/removeAll', [CartController::class, 'removeAllCart'])->name('
 Route::get('/rajaongkir/provinces', [RajaOngkirControler::class, 'getProvinces'])->name('customer.rajaongkir.getProvinces');
 Route::get('/rajaongkir/cities', [RajaOngkirControler::class, 'getCities'])->name('customer.rajaongkir.getCities');
 Route::post('/rajaongkir/checkOngkir', [RajaOngkirControler::class, 'checkOngkir'])->name('customer.rajaongkir.chekcOngkir');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::post('/notificationHandler', [CheckoutController::class, 'notificationHandler'])->name('notificationHanlder');
+
+Route::get('/sliders', [SliderController::class, 'index'])->name('customer.slider.index');
